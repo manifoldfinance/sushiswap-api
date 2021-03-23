@@ -1,0 +1,12 @@
+overwrite: true
+schema: schema.graphql
+generates:
+  src/generated-types.tsx:
+    documents: 'src/documents/**/*.graphql'
+    config:
+      skipDocumentsValidation: true
+      flattenGeneratedTypes: true
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'

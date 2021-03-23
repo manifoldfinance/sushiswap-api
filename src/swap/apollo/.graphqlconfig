@@ -1,0 +1,15 @@
+{
+  "name": "SushiSwap",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "SushiSwap": {
+        "url": "https://api.thegraph.com/subgraphs/name/sushiswap/exchange",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

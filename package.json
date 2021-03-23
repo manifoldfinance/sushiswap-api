@@ -1,0 +1,52 @@
+{
+  "name": "sushiswap-api",
+  "license": "SEE LICENSE IN LICENSE",
+  "version": "0.0.1",
+  "description": "sushiswap api",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/backbonecabal/sushi-api.git"
+  },
+  "dependencies": {
+    "@ethersproject/address": "^5.0.11",
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link-http": "^1.5.15",
+    "bignumber.js": "^9.0.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.11.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-ts": "^0.20.0",
+    "@graphql-codegen/cli": "^1.21.3",
+    "@graphql-codegen/typescript": "1.15.4",
+    "@graphql-codegen/typescript-operations": "^1.15.4",
+    "@types/aws-lambda": "^8.10.59",
+    "@types/node": "^14.14.35",
+    "@types/node-fetch": "^2.3.7",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^6.15.0",
+    "prettier": "^2.2.1",
+    "serverless": "^1.75.1",
+    "serverless-api-cloudfront": "^0.9.5",
+    "serverless-plugin-typescript": "^1.1.9",
+    "typescript": "3.6.0"
+  },
+  "scripts": {
+    "lint:base": "npx eslint ./src/**/*.ts",
+    "format:base": "npx prettier ./src/**/*.ts",
+    "fix:lint": "npx lint:base --fix",
+    "fix:format": "npx format:base --write",
+    "fix:all": "npm run-script fix:lint && yarn fix:format",
+    "check:lint": "npm run-script lint:base",
+    "check:format": "npm run-script format:base --check",
+    "check:all": "npm run-script check:lint && yarn check:format",
+    "generate:swap": "npx graphql-codegen --config src/swap/apollo/codegen.yml",
+    "build": "npx sls package"
+  }
+}
