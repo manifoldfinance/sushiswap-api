@@ -1,0 +1,16 @@
+service:
+  name: swr
+frameworkVersion: '1'
+
+provider:
+  name: cloudflare
+  config:
+    accountId: CLOUDFLARE_ACCOUNT_ID
+    zoneId: CLOUDFLARE_ZONE_ID
+
+plugins:
+  - serverless-cloudflare-workers
+
+functions:
+  swr:
+    name: swr
