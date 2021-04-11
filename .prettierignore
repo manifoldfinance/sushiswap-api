@@ -1,0 +1,7 @@
+typings
+*.html
+*.css
+*.scss
+build/
+dist/
+

@@ -1,14 +1,17 @@
-import { APIGatewayProxyHandler } from 'aws-lambda'
-import { getTopPairsData } from './_shared'
-import { createSuccessResponse, createServerErrorResponse } from '../utils/response'
+import { APIGatewayProxyHandler } from 'aws-lambda';
+import { getTopPairsData } from './_shared';
+import {
+  createSuccessResponse,
+  createServerErrorResponse,
+} from '../utils/response';
 
-export const handler: APIGatewayProxyHandler = async event => {
+export const handler: APIGatewayProxyHandler = async (event) => {
   return await getTopPairsData()
     .then(([topPairs, topPairsData]) => {
       return createSuccessResponse(
         topPairs.reduce((accumulator: any, _: any, i): any => {
-          const pair = topPairs[i]
-          const pairData = topPairsData[i]
+          const pair = topPairs[i];
+          const pairData = topPairsData[i];
 
           accumulator[`ETH_${pair.exchangeAddress}`] = {
             base_name: 'Ether',
@@ -20,13 +23,13 @@ export const handler: APIGatewayProxyHandler = async event => {
             quote_token_address: pair.tokenAddress,
             last_price: pairData.price,
             base_volume: pairData.tradeVolumeEth,
-            quote_volume: pairData.tradeVolumeToken
-          }
+            quote_volume: pairData.tradeVolumeToken,
+          };
 
-          return accumulator
+          return accumulator;
         }, {}),
-        60 * 15 // cache for 15 minutes
-      )
+        60 * 15, // cache for 15 minutes
+      );
     })
-    .catch(error => createServerErrorResponse(error))
-}
+    .catch((error) => createServerErrorResponse(error));
+};

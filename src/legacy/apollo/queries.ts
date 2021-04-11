@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const TOP_PAIRS = gql`
   query _($limit: Int!) {
@@ -9,7 +9,7 @@ export const TOP_PAIRS = gql`
       id
     }
   }
-`
+`;
 
 export const TOP_PAIRS_DATA = gql`
   query _($exchangeAddress: String!, $timestamp: Int!) {
@@ -29,7 +29,7 @@ export const TOP_PAIRS_DATA = gql`
       tradeVolumeToken
     }
   }
-`
+`;
 
 export const ORDERBOOK = gql`
   query _($exchangeAddress: String!) {
@@ -44,7 +44,7 @@ export const ORDERBOOK = gql`
       tokenBalance
     }
   }
-`
+`;
 
 export const TRANSACTIONS = gql`
   query _($skip: Int!, $exchangeAddress: String!, $timestamp: Int!) {
@@ -67,4 +67,4 @@ export const TRANSACTIONS = gql`
       }
     }
   }
-`
+`;

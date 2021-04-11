@@ -5,8 +5,8 @@ documents:
 generates:
   ./src/swap/generated/sushi-subgraph.ts:
     plugins:
-      - "typescript"
-      - "typescript-operations"
+      - 'typescript'
+      - 'typescript-operations'
     config:
       declarationKind: 'interface'
       immutableTypes: true
