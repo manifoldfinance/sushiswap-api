@@ -26,40 +26,40 @@ custom:
     minimumProtocolVersion: TLSv1
 
 functions:
-  v1-summary:
-    handler: src/v1/summary.handler
+  legacy-summary:
+    handler: src/legacy/summary.handler
     events:
       - http:
           method: get
-          path: /v1/summary
+          path: /legacy/summary
 
-  v1-tickers:
-    handler: src/v1/tickers.handler
+  legacy-tickers:
+    handler: src/legacy/tickers.handler
     events:
       - http:
           method: get
-          path: /v1/tickers
+          path: /legacy/tickers
 
-  v1-assets:
-    handler: src/v1/assets.handler
+  legacy-assets:
+    handler: src/legacy/assets.handler
     events:
       - http:
           method: get
-          path: /v1/assets
+          path: /legacy/assets
 
-  v1-orderbook:
-    handler: src/v1/orderbook.handler
+  legacy-orderbook:
+    handler: src/legacy/orderbook.handler
     events:
       - http:
           method: get
-          path: '/v1/orderbook/{pair}'
+          path: '/legacy/orderbook/{pair}'
 
-  v1-trades:
-    handler: src/v1/trades.handler
+  legacy-trades:
+    handler: src/legacy/trades.handler
     events:
       - http:
           method: get
-          path: '/v1/trades/{pair}'
+          path: '/legacy/trades/{pair}'
 
   swap-summary:
     handler: src/swap/summary.handler
