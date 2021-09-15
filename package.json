@@ -1,12 +1,12 @@
 {
   "name": "sushiswap-api",
   "license": "SEE LICENSE IN LICENSE",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "sushiswap api",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/backbonecabal/sushi-api.git"
+    "url": "git+https://github.com/manifoldfinance/sushi-api.git"
   },
   "dependencies": {
     "@ethersproject/address": "^5.0.11",
