@@ -11,4 +11,6 @@
 
 ## API
 
-[`/swap/` API documentation is located here](API.md)
+[`/swap/` API documentation](docs/API.md)
+
+[`/legacy/` API documentation](docs/API.md)
