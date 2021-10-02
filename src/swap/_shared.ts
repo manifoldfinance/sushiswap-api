@@ -101,39 +101,37 @@ export async function getTopPairs(): Promise<MappedDetailedPair[]> {
     }, {}) ?? {};
 
   return (
-    pairs?.map(
-      (pair): MappedDetailedPair => {
-        const yesterday = yesterdayVolumeIndex[pair.id];
-        if (yesterday) {
-          if (yesterday.volumeToken0.gt(pair.volumeToken0)) {
-            throw new Error(
-              `Invalid subgraph response: pair ${pair.id} returned volumeToken0 < yesterday.volumeToken0`,
-            );
-          }
-          if (yesterday.volumeToken1.gt(pair.volumeToken1)) {
-            throw new Error(
-              `Invalid subgraph response: pair ${pair.id} returned volumeToken1 < yesterday.volumeToken1`,
-            );
-          }
+    pairs?.map((pair): MappedDetailedPair => {
+      const yesterday = yesterdayVolumeIndex[pair.id];
+      if (yesterday) {
+        if (yesterday.volumeToken0.gt(pair.volumeToken0)) {
+          throw new Error(
+            `Invalid subgraph response: pair ${pair.id} returned volumeToken0 < yesterday.volumeToken0`,
+          );
         }
+        if (yesterday.volumeToken1.gt(pair.volumeToken1)) {
+          throw new Error(
+            `Invalid subgraph response: pair ${pair.id} returned volumeToken1 < yesterday.volumeToken1`,
+          );
+        }
+      }
 
-        return {
-          ...pair,
-          price:
-            pair.reserve0 !== '0' && pair.reserve1 !== '0'
-              ? new BigNumber(pair.reserve1).dividedBy(pair.reserve0).toString()
-              : undefined,
-          previous24hVolumeToken0:
-            pair.volumeToken0 && yesterday?.volumeToken0
-              ? new BigNumber(pair.volumeToken0).minus(yesterday.volumeToken0)
-              : new BigNumber(pair.volumeToken0),
-          previous24hVolumeToken1:
-            pair.volumeToken1 && yesterday?.volumeToken1
-              ? new BigNumber(pair.volumeToken1).minus(yesterday.volumeToken1)
-              : new BigNumber(pair.volumeToken1),
-        };
-      },
-    ) ?? []
+      return {
+        ...pair,
+        price:
+          pair.reserve0 !== '0' && pair.reserve1 !== '0'
+            ? new BigNumber(pair.reserve1).dividedBy(pair.reserve0).toString()
+            : undefined,
+        previous24hVolumeToken0:
+          pair.volumeToken0 && yesterday?.volumeToken0
+            ? new BigNumber(pair.volumeToken0).minus(yesterday.volumeToken0)
+            : new BigNumber(pair.volumeToken0),
+        previous24hVolumeToken1:
+          pair.volumeToken1 && yesterday?.volumeToken1
+            ? new BigNumber(pair.volumeToken1).minus(yesterday.volumeToken1)
+            : new BigNumber(pair.volumeToken1),
+      };
+    }) ?? []
   );
 }
 
@@ -161,10 +159,15 @@ export async function getReserves(
         token1,
       },
     })
-    .then(({ data: { pairs: [{ reserve0, reserve1 }] } }): [string, string] =>
-      tokenA.toLowerCase() === token0
-        ? [reserve0, reserve1]
-        : [reserve1, reserve0],
+    .then(
+      ({
+        data: {
+          pairs: [{ reserve0, reserve1 }],
+        },
+      }): [string, string] =>
+        tokenA.toLowerCase() === token0
+          ? [reserve0, reserve1]
+          : [reserve1, reserve0],
     );
 }
 

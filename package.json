@@ -1,12 +1,12 @@
 {
-  "name": "sushiswap-api",
+  "name": "sushiswap-exchange-api",
   "license": "SEE LICENSE IN LICENSE",
-  "version": "0.0.3",
+  "version": "0.4.0",
   "description": "sushiswap api",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/manifoldfinance/sushi-api.git"
+    "url": "git+https://github.com/manifoldfinance/sushiswap-api.git"
   },
   "dependencies": {
     "@ethersproject/address": "^5.0.11",
@@ -21,7 +21,7 @@
     "web3-batch-call": "^1.0.13"
   },
   "devDependencies": {
-    "@graphprotocol/graph-ts": "^0.20.0",
+    "@graphprotocol/graph-ts": "^0.22.1",
     "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/typescript": "1.15.4",
     "@graphql-codegen/typescript-operations": "^1.15.4",
@@ -38,6 +38,7 @@
     "serverless": "^1.75.1",
     "serverless-api-cloudfront": "^0.9.5",
     "serverless-cloudflare-workers": "^1.2.0",
+    "serverless-domain-manager": "^5.1.5",
     "serverless-export-swagger": "^2.0.0",
     "serverless-plugin-typescript": "^1.1.9",
     "serverless-webpack": "^5.2.0",
@@ -48,8 +49,8 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "lint:base": "npx eslint ./src/**/*.ts",
-    "format:base": "npx prettier ./src/**/*.ts",
+    "lint:base": "npx eslint ./src/**/*.ts --fix",
+    "format:base": "npx prettier --write ./src/**/*.ts",
     "fix:lint": "npx lint:base --fix",
     "fix:format": "npx format:base --write",
     "fix:all": "npm run-script fix:lint && yarn fix:format",
@@ -57,6 +58,7 @@
     "check:format": "npm run-script format:base --check",
     "check:all": "npm run-script check:lint && yarn check:format",
     "generate:swap": "npx graphql-codegen --config src/swap/apollo/codegen.yml",
-    "build": "npx sls package"
+    "build": "npx sls package",
+    "prod": "NODE_ENV=production npx sls package"
   }
 }
