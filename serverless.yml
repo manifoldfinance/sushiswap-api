@@ -15,17 +15,6 @@ plugins:
   - serverless-plugin-typescript
   - serverless-api-cloudfront
 
-custom:
-  apiCloudFront:
-    domain: api.sushilayer.info
-    certificate: 'arn:aws:acm:us-east-1:870337023970:certificate/442d57cb-e33e-45d1-b836-5fd0abd57930'
-    compress: true
-    cookies: none
-    headers: none
-    querystring: none
-    priceClass: PriceClass_100
-    minimumProtocolVersion: TLSv1
-
 functions:
   legacy-summary:
     handler: src/legacy/summary.handler

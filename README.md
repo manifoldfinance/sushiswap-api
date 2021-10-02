@@ -8,7 +8,6 @@
 
 [![nodejs](https://github.com/manifoldfinance/sushiswap-api/actions/workflows/nodejs.yml/badge.svg)](https://github.com/manifoldfinance/sushiswap-api/actions/workflows/nodejs.yml)
 
-
 ## API
 
 [`/swap/` API documentation](docs/API.md)
