@@ -1,5 +1,6 @@
-service:
-  name: uniswap-api
+org: sambacha
+app: sushi-api
+service: exchange
 
 frameworkVersion: '>=1.75.1 <2.0.0'
 
