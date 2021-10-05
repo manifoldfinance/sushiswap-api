@@ -7,12 +7,6 @@ chainId: 0x01
 
 # SushiSwap Endpoints
 
-All SushiSwap pairs consist of two different tokens. ETH is not a native
-currency in SushiSwap, and is represented only by WETH in the pairings.
-
-The canonical WETH address used by the SushiSwap interface is
-`0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`.
-
 ## [`/swap/summary`](https://7ob2ikxqn7.execute-api.us-east-1.amazonaws.com/dev//swap/summary)
 
 Returns data for the top ~1000 SushiSwap pairs, sorted by reserves. Results are
@@ -157,3 +151,6 @@ address is considered the base in the response.
   // ...
 ]
 ```
+
+
+weth: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
