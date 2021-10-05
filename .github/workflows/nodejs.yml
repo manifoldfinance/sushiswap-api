@@ -39,4 +39,4 @@ jobs:
          yarn install --frozen-lockfile
          echo "::set-output name=install::nodejs"
       - name: Run build
-        run: npx tsc -b
+        run: yarn run generate:swap
