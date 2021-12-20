@@ -39,4 +39,4 @@ jobs:
          yarn install --frozen-lockfile
          echo "::set-output name=install::nodejs"
       - name: Run build
-        run: yarn run generate:swap
+        run: yarn run build && yarn run generate:swap
